@@ -3,7 +3,8 @@
 
 #include <stdint.h>
 
-uint8_t calc_crc8(const uint8_t* data, uint8_t length) {
+inline uint8_t calc_crc8(const uint8_t* data, uint8_t length)
+{
   // NOTE: length is short, so yield is not required
   uint8_t crc = 0x00;
   while (length--) {
