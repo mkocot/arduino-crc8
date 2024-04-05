@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-enum CRC8_POLY
+enum CRC8_POLY : uint8_t
 {
   CRC8_POLY_DVB_S2 = 0xD5,
   CRC8_POLY_OLD_DEFAULT = 0x5D,
@@ -17,7 +17,7 @@ inline static uint8_t crc8(const CRC8_POLY poly, const uint8_t *data, uint8_t le
     crc ^= *data++;
     for (uint8_t i = 0; i < 8; i++) {
       if (crc & 0x80) {
-        crc = (crc << 1) ^ 0xD5;
+        crc = (crc << 1) ^ poly;
       } else {
         crc <<= 1;
       }
